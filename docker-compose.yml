@@ -1,0 +1,17 @@
+﻿version: "3.9"
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql_server
+    environment:
+     - ACCEPT_EULA=Y
+     # TODO: read from .env file
+     - SA_PASSWORD=password123
+     - MSSQL_PID=Express
+    ports:
+     - "1433:1433"
+    volumes:
+     - dbv:/var/opt/mssql
+volumes:
+  dbv:
+    name: mssql_server
